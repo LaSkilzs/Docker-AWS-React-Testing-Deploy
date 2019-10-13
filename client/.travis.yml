@@ -1,9 +1,11 @@
-language: node_js
-# sudo: required
+sudo: required
 services:
   - docker
+language: node_js
+
 before_install:
-  - docker build -t lafountain/docker-react -f client/Dockerfile.dev .
+  - phpenv global 7.0
+    - docker build -t lafountain/docker-react -f client/Dockerfile.dev .
 
 script:
   - docker run -e CI=true lafountain/docker-react npm run test
